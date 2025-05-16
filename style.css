@@ -1,0 +1,233 @@
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+textarea {
+    width: 90%;
+    height: 150px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+} */
+
+
+/* Form Container */
+.container {
+    width: 30%;
+    margin: 5rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Form Button */
+form button {
+    width: 100%;
+    padding: 0.8rem;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: #0056b3;
+}
+
+/* Links */
+form p a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+form p a:hover {
+    text-decoration: underline;
+}
+
+
+/* dashboard css starts */
+
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f5f5f5;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Container */
+.gmail-dashboard-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.gmail-sidebar {
+    width: 250px;
+    background: #1a73e8;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.gmail-sidebar h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.gmail-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.gmail-menu li {
+    margin: 10px 0;
+}
+
+.gmail-menu a {
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: block;
+    transition: background 0.3s ease;
+}
+
+.gmail-menu a:hover {
+    background: #155bb5;
+}
+
+/* Main Content */
+.gmail-main {
+    flex: 1;
+    padding: 20px;
+}
+
+.gmail-header {
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.gmail-header h1 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+/* Compose Section */
+/* Compose Form */
+.compose-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.compose-form input,
+.compose-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.compose-form button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.compose-form button:hover {
+    background-color: #0056b3;
+}

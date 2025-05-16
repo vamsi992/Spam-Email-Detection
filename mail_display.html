@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emails</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Received Emails</h1>
+    <h2>Ham</h2>
+    <ul>
+        {% for email in ham_emails %}
+        <li>{{ email }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Spam</h2>
+    <ul>
+        {% for email in spam_emails %}
+        <li>{{ email }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/dashboard">Back to Dashboard</a>
+</body>
+</html>

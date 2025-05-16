@@ -1,0 +1,149 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="gmail-dashboard-container">
+        
+        <aside class="gmail-sidebar">
+            <h2>MyMail</h2>
+            <ul class="gmail-menu">
+                <li><a href="#">Compose</a></li>
+                <li><a href="/view_emails">Inbox</a></li>
+                <li><a href="/view_spam">Spam</a></li>
+                <li><a href="#">Sent</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </aside>
+
+      
+        <main class="gmail-main">
+            <header class="gmail-header">
+                <h1>Welcome, {{ user }}</h1>
+            </header>
+            
+            
+            <section class="gmail-compose">
+                <h2>Compose Email</h2>
+                <form method="POST" action="/send_email">
+                    <input type="text" name="receiver" placeholder="Recipient's username" required>
+                    <textarea name="email_text" placeholder="Write your email here..." required></textarea>
+                    <button type="submit">Send Email</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html> -->
+
+<!--  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="gmail-dashboard-container">
+        <!-- Sidebar -->
+        <aside class="gmail-sidebar">
+            <h2>MyMail</h2>
+            <ul class="gmail-menu">
+                <li><a href="#" onclick="showCompose()">Compose</a></li>
+                <li><a href="#" onclick="loadContent('ham')">Inbox</a></li>
+                <li><a href="#" onclick="loadContent('spam')">Spam</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="gmail-main">
+            <header class="gmail-header">
+                <h1>Welcome, {{ user }}</h1>
+            </header>
+            <section id="email-content">
+                <p>Select a category to view emails or compose a new email.</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+     function loadContent(type) {
+    fetch(`/view_emails/${type}`)
+        .then(response => response.json()) // Parse response as JSON
+        .then(data => {
+            const container = document.getElementById('email-content');
+            container.innerHTML = ""; // Clear previous content
+
+            if (!Array.isArray(data) || data.length === 0) {
+                container.innerHTML = `<p>No ${type} emails found.</p>`;
+                return;
+            }
+
+            // Iterate through the email list and display them
+            data.forEach((email, index) => {
+                const truncatedContent = email.content.length > 100 
+                    ? email.content.slice(0, 100) + '... <a href="#" onclick="expandContent(' + index + ')">Read more</a>'
+                    : email.content;
+
+                const emailCard = `
+                    <div class="email-card" id="email-${index}">
+                        <h3> <strong>Subject:</strong> ${email.subject}</h3>
+                        <p><strong>From:</strong> ${email.sender}</p>
+                        <p id="email-content-${index}">${truncatedContent}</p>
+                    </div>
+                `;
+                container.innerHTML += emailCard;
+            });
+
+            // Store full email content for use in "Read more"
+            window.fullEmailContent = data.map(email => email.content);
+        })
+        .catch(error => {
+            console.error('Error fetching emails:', error);
+            const container = document.getElementById('email-content');
+            container.innerHTML = `<p>Error loading emails. Please try again later.</p>`;
+        });
+}
+
+function expandContent(index) {
+    const fullContent = window.fullEmailContent[index];
+    const contentElement = document.getElementById(`email-content-${index}`);
+    contentElement.innerHTML = fullContent + ` <a href="#" onclick="collapseContent(${index})">Read less</a>`;
+}
+
+function collapseContent(index) {
+    const fullContent = window.fullEmailContent[index];
+    const truncatedContent = fullContent.length > 100 
+        ? fullContent.slice(0, 100) + '... <a href="#" onclick="expandContent(' + index + ')">Read more</a>'
+        : fullContent;
+    
+    const contentElement = document.getElementById(`email-content-${index}`);
+    contentElement.innerHTML = truncatedContent;
+}
+
+        function showCompose() {
+            const container = document.getElementById('email-content');
+            container.innerHTML = `
+                <form method="POST" action="/send_email" class="compose-form">
+                    <input type="text" name="receiver" placeholder="Recipient's username" required>
+                     <input type="text" name="subject" placeholder="Subject of E" required>
+                    <textarea name="email_text" placeholder="Enter your email text" required></textarea>
+                    <button type="submit">Send Email</button>
+                </form>
+            `;
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header
+    style="display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    font-size: 2em;
+    font-weight: 900;
+    ">
+        Welcome to the Email Classifier
+    </header>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label for="email">Username</label>
+                <input type="text" id="email" name="username" placeholder="Enter your Username" required>
+            </div>
+           
+            <button type="submit">Login</button>
+        </form>
+        <!-- <p>Don't have an account? <a href="/register">Register here</a></p> -->
+    </div>
+    <footer
+    style="display: flex;
+    justify-content: center;
+    
+    ">
+        &copy; 2024 Email Classifier. All rights reserved.
+    </footer>
+</body>
+</html>
